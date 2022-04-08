@@ -1,5 +1,8 @@
 # Author: Thorben Quast, thorben.quast@cern.ch
 # Date: 10 September 2021
+import sys
+sys.path.append('/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/plots')
+
 
 import common as cm
 ROOT = cm.ROOT
