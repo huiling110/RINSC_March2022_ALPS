@@ -75,7 +75,7 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 % }
 \logo{
   \includegraphics[width=0.7cm]{plots/CMS_Logo.png}
-  % \includegraphics[width=0.7cm]{plots/CERN_Logo.png}
+  \includegraphics[width=0.7cm]{plots/CERN_logo.png}
 }
 
 %\author{Huiling Hua}
@@ -113,7 +113,7 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 {
   \begin{frame}<beamer>{Outline}
     \tableofcontents[currentsection]
-    \addtocounter{framenumber}{-1}
+    % \addtocounter{framenumber}{-1}
   \end{frame}
 }
 
@@ -164,17 +164,40 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
           \includegraphics[width=.9\textwidth]{plots/Round6_temp_profile.png}
         \end{figure}
     \end{columns}
-
-
 \end{frame}
 
 
 
-\begin{frame}{Sensor list}
-  \begin{figure}
-      \includegraphics[width=.45\textwidth]{plots/Sensors.png}
-  \end{figure}
+\begin{frame}{Sensor list and annealing step}
+%   \begin{figure}
+%       \includegraphics[width=.45\textwidth]{plots/Sensors.png}
+%   \end{figure}
 
+    \begin{table}[htbp] %[h]
+        \centering
+        \footnotesize%Use \footnotesize for a 20% (linear) reduction in font size
+        \setlength\tabcolsep{2pt}%Reduce the amount of intercolumn whitespace
+        \resizebox{1.0\textwidth}{!}{% 
+            \begin{tabular}{|c | c |c|c|} 
+             \hline
+                sensor &  annealing steps post raditation & IV grading & CV grading \\
+             \hline
+             N4790\_09  & 27.6min + 31.8min & all passed & inclusive \\ 
+             \hline
+             N4790\_21 & 10.9min + 11.7min + 11.4min + 9.6min +11.5min + 19.9min+ 11.4min + 17.2min & all passed & inclusive  \\
+
+             \hline
+             N4792\_7 & 30.9min +  31.0min  & 0 passed , 30 analysis not run, 60 passed& inclusive \\
+             \hline
+             \hline
+             N4790\_08 & no additional annealing & passed & inclusive \\
+             N4792\_09 & no additional annealing & passed & inclusive \\
+             N4792\_20 & no additional annealing & analysis not run & inclusive\\
+            \hline
+            \end{tabular}
+        }
+        \caption{Annealing steps}
+        \end{table}   
   \begin{itemize}
       \small
       \item Sensor N4792\_08 could not be located, instead the sensor N4792\_07 was found in the stack
@@ -202,46 +225,23 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 
 \section{IV Results, Annealing}
 
-% \begin{frame}{IV grading criteria}
-%    \begin{itemize
-%        \item \alert{Per-pad} characteristics (\alert{bad pad} definition)
-%             \begin{itemize}
-%                 \item $ {I}_{600} > 100 nA $
-%                 \item $ I600 > 10 nA  $  and $ I800 > 2.5 \times I600 $
-%                 \item $ I600 <= 10 nA $  and $ I800 > 25 nA $
-%             \end{itemize}
-%        \item \alert{Global} characteristic
-%             \begin{itemize}
-%                 \item I600 (normalised to 20 deg Celsius)$ <= 100 µA $ (integrated over all pads)
-%                 \item $ I800 < 2.5 x I600 $
-%                 \item Number of bad pads $ <= 8 $for full-sized sensors
-%                 \item Allowed number of adjacent bad pads$ <= 2$
-%             \end{itemize}
-%    \end{itemize}
-
-% \end{frame}
 
 \begin{frame}{IV results, N4790\_21}
    \begin{columns}
         \column{.45\textwidth}
         \begin{figure}
             \includegraphics[width=1.0\textwidth]{plots/annealing_IV_ch101_N4790_21.png}
-            \caption{Total current of all 19 HD sensors}
+            \caption{IV of pad 101}
         \end{figure}
 
         \column{.55\textwidth}
         \begin{figure}
             \includegraphics[width=1.0\textwidth]{plots/annealing_current_N4790_21.png}
-            \caption{One of the failed sensors}
+            \caption{Current vs annealing time at 600V}
         \end{figure}
-
     \end{columns}
-
     \begin{itemize}
-        \item \alert{16 passed}, \alert{3 failed} for HD sensors
-        \item Failing criteria:  $I_\text{800V, total} < 2.5 \times I_\text{600V, total}$
-        \item Failing reason: one pad has high current readings
-        \item Results of LD in backup
+        \item we do see annealing effect on current
     \end{itemize}
 \end{frame}
 
@@ -259,15 +259,7 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
            \includegraphics[width=1.0\textwidth]{plots/annealing_current_N4790_09.png}
            \caption{One of the failed sensors}
        \end{figure}
-
    \end{columns}
-
-   \begin{itemize}
-       \item \alert{16 passed}, \alert{3 failed} for HD sensors
-       \item Failing criteria:  $I_\text{800V, total} < 2.5 \times I_\text{600V, total}$
-       \item Failing reason: one pad has high current readings
-       \item Results of LD in backup
-   \end{itemize}
 \end{frame}
 
 \begin{frame}{IV results, N4792\_07}
@@ -283,174 +275,45 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
            \includegraphics[width=1.0\textwidth]{plots/annealing_current_N4792_7.png}
            \caption{One of the failed sensors}
        \end{figure}
-
    \end{columns}
-
-   \begin{itemize}
-       \item \alert{16 passed}, \alert{3 failed} for HD sensors
-       \item Failing criteria:  $I_\text{800V, total} < 2.5 \times I_\text{600V, total}$
-       \item Failing reason: one pad has high current readings
-       \item Results of LD in backup
-   \end{itemize}
 \end{frame}
 
-
-% \begin{frame}{Comparison of IV results between HPK and CERN}
-%   \begin{figure}
-%     \includegraphics[width=.7\textwidth]{plots/IV_CERN_HPK_300um_cropped.png}
-%   \end{figure}
-%   \begin{itemize}
-%     \scriptsize
-%       \item In general, IV Measurement at CERN and that of HPK has \alert{good agreement}
-%       \item For \alert{guard ring}, CERN has slightly higher reading than HPK 
-%   \end{itemize}
-% \end{frame}
-
-\begin{frame}{Summary for IV results}
-    \begin{table}[htbp] %[h]
-        \centering
-        \footnotesize%Use \footnotesize for a 20% (linear) reduction in font size
-        \setlength\tabcolsep{2pt}%Reduce the amount of intercolumn whitespace
-        \resizebox{0.8\textwidth}{!}{% 
-            \begin{tabular}{|c | c |c|c|} 
-             \hline
-             sensors  & passed sensors(CERN) & agreement with HPK & Source\\
-
-             \hline
-             HD (120um)  & \alert{16/19 } &  good agreement    &   \href{https://indico.cern.ch/event/1119831/contributions/4702464/attachments/2378225/4063679/Si\%20sensor\%20meeting.pdf}{\beamergotobutton{Link}} \\
-             \hline
-             LD (200um)&   \alert{12/12} & good agreement  &   \href{https://indico.cern.ch/event/1132823/contributions/4755812/attachments/2399581/4103704/LD\%20proto-A\%20sensors\%20200\%20um\%2C\%20ALPS\%20Winter\%202022.pdf}{\beamergotobutton{Link}} \\
-             \hline
-             LD (300um) &   \alert{14/14} & good agreement &   \href{https://indico.cern.ch/event/1085830/contributions/4565314/attachments/2344490/3998306/IVCV_recent_HGCal_prototype_sensors_Readiness_Review.pdf}{\beamergotobutton{Link}} \\
-             \hline
-            \end{tabular}
-        }
-        \caption{Summary for all protoA sensors}
-        \end{table}   
-
-
-    \begin{itemize}
-        \item \alert{Majority} of sensors have \alert{good IV} results
-        \item The reasons for failure were investigated
-        % \item  \href{https://indico.cern.ch/event/1119831/contributions/4702464/attachments/2378225/4063679/Si%20sensor%20meeting.pdf}{links}
-        
-        
-    \end{itemize}
-\end{frame}
 
 
 \section{CV Results, Annealing}
 
 \begin{frame}{CV results, N4790\_21}
   \begin{figure}
-      \includegraphics[width=1.0\textwidth]{plots/annealing_CV_ch101_N4790_21.png}    
+      \includegraphics[width=.6\textwidth]{plots/annealing_CV_ch101_N4790_21.png}    
   \end{figure}
   \begin{itemize}
-    \item HexPlots as graphical representation of cell properties on the sensor
-    \item CV curves
+    % \item HexPlots as graphical representation of cell properties on the sensor
+    \item We do see annealing effects
+    \item Reached the limit of reversed annealing at around \alert{60 min}
+    \item  Depletion voltage not reached 
   \end{itemize}
 \end{frame}
 
 \begin{frame}{CV results, N4790\_09}
   \begin{figure}
-      \includegraphics[width=1.0\textwidth]{plots/annealing_CV_ch101_N4790_09.png}    
+      \includegraphics[width=.7\textwidth]{plots/annealing_CV_ch101_N4790_09.png}    
   \end{figure}
   \begin{itemize}
-    \item HexPlots as graphical representation of cell properties on the sensor
     \item CV curves
   \end{itemize}
 \end{frame}
 
 \begin{frame}{CV results, N4792\_07}
   \begin{figure}
-      \includegraphics[width=1.0\textwidth]{plots/annealing_CV_ch101_N4792_7.png}    
+      \includegraphics[width=.7\textwidth]{plots/annealing_CV_ch101_N4792_7.png}    
   \end{figure}
   \begin{itemize}
-    \item HexPlots as graphical representation of cell properties on the sensor
     \item CV curves
   \end{itemize}
 \end{frame}
 
 
 
-% \begin{frame}{HD 120 um, depletion voltage fit fails for some cells}
-%   \begin{columns}
-%     \column{.5\textwidth}
-%     \begin{figure}
-%       \includegraphics[width=.55\textwidth]{plots/CV_Fit_just_figures1.png}
-%       %\caption{Successful fit: most cells}
-%     \end{figure}
-%     \column{.5\textwidth}
-%     \begin{figure}
-%       \includegraphics[width=.55\textwidth]{plots/CV_Fit_just_figures2.png}
-%       \caption{Strange fit: calibration cells and edge cells}
-%     \end{figure}
-%     \begin{figure}
-%       \includegraphics[width=.55\textwidth]{plots/CV_Fit_just_figures3.png}
-%       \caption{Failed fit: random cells}
-%     \end{figure}
-
-% \end{columns}
-
-%   \begin{figure}
-    
-%   \end{figure}
-%   \href{https://indico.cern.ch/event/1119831/contributions/4702464/attachments/2378225/4063679/Si\%20sensor\%20meeting.pdf}{\beamergotobutton{Proto-A, 120 um}}
-
-% \end{frame}
-
-% \begin{frame}{HD 120 um, depletion voltage fit fails for some cells}
-%   \begin{columns}
-%     \column{.5\textwidth}
-%     \begin{figure}
-%       \includegraphics[width=.55\textwidth]{plots/CV_Fit_just_figures1.png}
-%       \includegraphics[width=.55\textwidth]{plots/CV_Fit_just_figures2.png}
-%       \includegraphics[width=.55\textwidth]{plots/CV_Fit_just_figures3.png}
-%       %\caption{Successful fit: most cells}
-%     \end{figure}
-%     \column{.5\textwidth}
-
-%     \begin{itemize}
-%       \item Successful fit: for most cells of the sensors
-%       \item Strange fit: calibration cells and edge cells, same cells for all the sensors
-%       \item Failed fit: random cells for the sensors
-%     \end{itemize}
-%     \href{https://indico.cern.ch/event/1119831/contributions/4702464/attachments/2378225/4063679/Si\%20sensor\%20meeting.pdf}{\beamergotobutton{Proto-A, 120 um}}
-
-
-% \end{columns}
-
-% \end{frame}
-
-
-\begin{frame}{Summary for CV results}
-  \begin{table}[htbp] %[h]
-      \centering
-      \footnotesize%Use \footnotesize for a 20% (linear) reduction in font size
-      \setlength\tabcolsep{2pt}%Reduce the amount of intercolumn whitespace
-      \resizebox{0.8\textwidth}{!}{% 
-          \begin{tabular}{|c | c |c|c|} 
-           \hline
-           sensors  & passed sensors(CERN) & agreement with HPK \\
-
-           \hline
-           HD (120um)  & \alert{13/13 }               & good agreement &   \href{https://indico.cern.ch/event/1119831/contributions/4702464/attachments/2378225/4063679/Si\%20sensor\%20meeting.pdf}{\beamergotobutton{Link}} \\
-           \hline
-           LD (200um)&   \alert{5/5} & good agreement &   \href{https://indico.cern.ch/event/1132823/contributions/4755812/attachments/2399581/4103704/LD\%20proto-A\%20sensors\%20200\%20um\%2C\%20ALPS\%20Winter\%202022.pdf}{\beamergotobutton{Link}} \\
-           \hline
-           LD (300um) &   \alert{14/14} & good agreement &   \href{https://indico.cern.ch/event/1085830/contributions/4565314/attachments/2344490/3998306/IVCV_recent_HGCal_prototype_sensors_Readiness_Review.pdf}{\beamergotobutton{Link}} \\
-           \hline
-          \end{tabular}
-      }
-      \caption{Summary for all protoA sensors}
-      \end{table}   
-
-
-  \begin{itemize}
-      \item \alert{All} sensors have \alert{passed} CV grading      
-      
-  \end{itemize}
-\end{frame}
 
 
 \section{Alpha plot}
