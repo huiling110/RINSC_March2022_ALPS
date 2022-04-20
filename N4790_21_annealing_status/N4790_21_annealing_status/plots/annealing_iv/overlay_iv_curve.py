@@ -42,6 +42,7 @@ for drawindex, postfix in enumerate(["_1MOhm", "_10minAnnealing", "_20minAnneali
     # retrieve paths of processed files as input
     print(_measID)
     print(postfix)
+    #Resuts folder: /eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_Winter2022_ALPS/
     infile = ROOT.TFile(os.path.join(
         os.environ["DATA_DIR"], "iv/channelIV/%s/TGraphErrors.root" % (measID)), "READ")
 
