@@ -116,9 +116,11 @@ def main():
     
     
     #save pdf
-    canvas.Print(os.path.join(thisdir, "{}.pdf".format(name)))
-    canvas.Print(os.path.join(thisdir, "{}.png".format(name)))
+    # canvas.Print(os.path.join(thisdir, "{}.pdf".format(name)))
+    # canvas.Print(os.path.join(thisdir, "{}.png".format(name)))
     #??Print? SaveAs()
+    canvas.Print( plotsDir + '{}.pdf'.format(name) )
+    canvas.Print( plotsDir + '{}.png'.format(name) )
 
 
 if __name__=='__main__':
