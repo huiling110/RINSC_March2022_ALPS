@@ -17,8 +17,9 @@ from common.util import *
 
 #export DATA_DIR=/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/data/
 def main():
-    inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/' 
+    # inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/' 
     #input folder:  /eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/ copyied frome /home/data/hgsensor_cv/RINSC_March2022_ALPS/ in plpcd15
+    inputRootFolder = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/data/'
     plotsDir = 'output/' 
 
     #measurement specifics
@@ -55,8 +56,9 @@ def main():
         print(_measID)
         print(postfix)
         #Resuts folder: /eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_Winter2022_ALPS/
-        infile = ROOT.TFile(os.path.join( os.environ["DATA_DIR"], "iv/channelIV/%s/TGraphErrors.root" % (measID)), "READ")
-        # infile = ROOT.TFile( inputRootFolder + 'iv/channelIV/')
+        # infile = ROOT.TFile(os.path.join( os.environ["DATA_DIR"], "iv/channelIV/%s/TGraphErrors.root" % (measID)), "READ")
+        inFileName = inputRootFolder + 'iv/channelIV/{}/TGraphErrors.root'.format(measID)
+        infile = ROOT.TFile( inFileName, "READ" )
 
 
         gr = deepcopy(infile.Get("IV_uncorrected_channel%i" % CHANNEL))
