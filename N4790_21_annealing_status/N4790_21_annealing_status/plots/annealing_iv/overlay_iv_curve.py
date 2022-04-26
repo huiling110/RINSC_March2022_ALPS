@@ -9,7 +9,6 @@ ROOT.gROOT.SetBatch(True)
 cm.setup_style()
 
 import os
-thisdir = os.path.dirname(os.path.realpath(__file__))
 from copy import deepcopy
 from common.util import *
 
@@ -56,7 +55,6 @@ def main():
         print(_measID)
         print(postfix)
         #Resuts folder: /eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_Winter2022_ALPS/
-        # infile = ROOT.TFile(os.path.join( os.environ["DATA_DIR"], "iv/channelIV/%s/TGraphErrors.root" % (measID)), "READ")
         inFileName = inputRootFolder + 'iv/channelIV/{}/TGraphErrors.root'.format(measID)
         infile = ROOT.TFile( inFileName, "READ" )
 
@@ -116,8 +114,6 @@ def main():
     
     
     #save pdf
-    # canvas.Print(os.path.join(thisdir, "{}.pdf".format(name)))
-    # canvas.Print(os.path.join(thisdir, "{}.png".format(name)))
     #??Print? SaveAs()
     canvas.Print( plotsDir + '{}.pdf'.format(name) )
     canvas.Print( plotsDir + '{}.png'.format(name) )
