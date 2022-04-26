@@ -12,10 +12,23 @@ import os
 from copy import deepcopy
 from common.util import *
 
-#main draws the overlay of IV of different measurement with respect to the same channel
+def drawMultipleChannls( ):
+    # channelList = [15, 25, 35, 45, 55, 67, 77, 87, 97, 105, 115, 123, 133, 145, 157, 167, 177, 187]
+    channelList = [ 
+                   1, 
+                   #12, 13, 14, 15, 16, 17, 18, 196, 197, 198, 199, 
+                   100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110]
+    for ichannel in channelList:
+        main( ichannel )
 
+
+#main draws the overlay of IV of different measurement with respect to the same channel
 #export DATA_DIR=/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/data/
-def main():
+def main(
+    
+    CHANNEL = 101
+    ):
+    
     # inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/' 
     #input folder:  /eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/ copyied frome /home/data/hgsensor_cv/RINSC_March2022_ALPS/ in plpcd15
     # inputRootFolder = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/data/'
@@ -23,11 +36,14 @@ def main():
     plotsDir = 'output/' 
 
     #measurement specifics
-    _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
-    repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
-    CHANNEL = 101
-    name = "annealing_IV_ch%s" %  CHANNEL
+    # _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
+    # repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
+    _measID = '8in_198ch_2019_N4790_21_4E15'
+    repeatedMeasureNames = [ '_neg37degC_tscan', '_neg38degC_tscan','_neg39degC_tscan', '_neg40degC_tscan', '_neg41degC_tscan', '_neg42degC_tscan' ]
     
+    
+    # name = "annealing_IV_ch%s" %  CHANNEL
+    name = 'tempareture_effect_{}'.format( CHANNEL )
     
     
     
@@ -68,6 +84,10 @@ def main():
         infile = ROOT.TFile( inFileName, "READ" )
 
 
+        if ( not infile.Get("IV_uncorrected_channel%i" % CHANNEL) ):
+            print( 'channel not measured: ', CHANNEL )
+            # break
+            continue
         gr = deepcopy(infile.Get("IV_uncorrected_channel%i" % CHANNEL))
         infile.Close()
 
@@ -129,4 +149,5 @@ def main():
 
 
 if __name__=='__main__':
-    main()
+    # main()
+    drawMultipleChannls()
