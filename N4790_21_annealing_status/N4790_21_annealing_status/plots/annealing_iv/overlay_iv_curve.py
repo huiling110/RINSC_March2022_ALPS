@@ -18,16 +18,23 @@ from common.util import *
 def main():
     # inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/' 
     #input folder:  /eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/ copyied frome /home/data/hgsensor_cv/RINSC_March2022_ALPS/ in plpcd15
-    inputRootFolder = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/data/'
+    # inputRootFolder = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/data/'
+    inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/channelIV/'
     plotsDir = 'output/' 
 
     #measurement specifics
     _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
     repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
     CHANNEL = 101
-
-
     name = "annealing_IV_ch%s" %  CHANNEL
+    
+    
+    
+    
+    
+    
+    
+    
     #prepare the canvas
     canvas = ROOT.TCanvas("Canvas" + name, "canvas" + name, cm.default_canvas_width, cm.default_canvas_height)
     # I see, the commen module provides some ploting uniformity
@@ -56,7 +63,8 @@ def main():
         print(_measID)
         print(postfix)
         #Resuts folder: /eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_Winter2022_ALPS/
-        inFileName = inputRootFolder + 'iv/channelIV/{}/TGraphErrors.root'.format(measID)
+        # inFileName = inputRootFolder + 'iv/channelIV/{}/TGraphErrors.root'.format(measID)
+        inFileName = inputRootFolder + '{}/TGraphErrors.root'.format(measID)
         infile = ROOT.TFile( inFileName, "READ" )
 
 
