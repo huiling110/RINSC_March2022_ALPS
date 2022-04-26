@@ -23,6 +23,7 @@ def main():
 
     #measurement specifics
     _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
+    repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
     CHANNEL = 101
 
 
@@ -48,7 +49,7 @@ def main():
 
     colors = [ROOT.kBlack, ROOT.kCyan+1, ROOT.kBlue+1, ROOT.kViolet+1, ROOT.kGreen-1, ROOT.kRed+1, ROOT.kTeal, ROOT.kAzure, ROOT.kMagenta, ROOT.kOrange]
 
-    for drawindex, postfix in enumerate(["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]):
+    for drawindex, postfix in enumerate( repeatedMeasureNames ):
         measID = _measID+postfix
         label = "no additional annealing" if postfix=="" else postfix.replace("_", "").replace("minAnnealing", " min at 60^{#circ}C")
         # retrieve paths of processed files as input
@@ -115,8 +116,8 @@ def main():
     
     #save pdf
     #??Print? SaveAs()
-    canvas.Print( plotsDir + '{}.pdf'.format(name) )
-    canvas.Print( plotsDir + '{}.png'.format(name) )
+    canvas.Print( plotsDir + '{}_{}.pdf'.format( _measID, name) )
+    canvas.Print( plotsDir + '{}_{}.png'.format( _measID, name) )
 
 
 if __name__=='__main__':
