@@ -149,7 +149,6 @@ def main():
         if NGraphs == 20:
             break
         
-        
 
     canvas.cd()
     # cms label
@@ -171,8 +170,6 @@ def main():
 
     pad.SetGrid(True)
     #save pdf
-    # canvas.Print(os.path.join(thisdir, "{}.pdf".format(name)))
-    # canvas.Print(os.path.join(thisdir, "{}.png".format(name)))
     canvas.Print( plotsDir + '{}_{}_{}.pdf'.format( _measID, name, EVALVOLTAGE) )
     canvas.Print( plotsDir + '{}_{}_{}.png'.format( _measID, name, EVALVOLTAGE) )
 
