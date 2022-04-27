@@ -85,7 +85,7 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 %   \inst{1}%
 %     IHEP
 % }
-\date[14.04.2022] % (optional, should be abbreviation of conference name)
+\date[28.04.2022] % (optional, should be abbreviation of conference name)
 {HGC Si characterisations at CERN}
 
 % - Either use conference name or its abbreviation.
@@ -145,9 +145,9 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
            \hline
            \textbf{Target fluence [neq/cm2]}  &   4.00E+15 & 5.50E+15\\
            \hline
-           \href{https://indico.cern.ch/event/1121372/contributions/4715417/attachments/2382784/4071626/2-1-2022_Irradiation_Update_from_Brown.pdf}{\textbf{Annealing time in the reactor at $60^{oC}$}}  &  16.1 min & 115.4 min \\
+           \href{https://indico.cern.ch/event/1121372/contributions/4715417/attachments/2382784/4071626/2-1-2022_Irradiation_Update_from_Brown.pdf}{\textbf{Annealing time in the reactor at $60^{oC}$}}  &  16.1 min (Front: 48.8 min, Back: 9.2 min) & 115.4 min (Front: 961.5 min, Back: 18.6 min)\\
            \hline
-           \textbf{Order} (back to front) &   N4792\_08, N4790\_09, N4790\_21 & N4792\_09, N4790\_08, N4790\_20 \\
+           \textbf{Order} (back to front) &   N4790\_08, N4790\_09, N4790\_21 & N4792\_09, N4790\_08, N4792\_20 \\
            \hline
           \end{tabular}
       }
@@ -164,6 +164,8 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
           \includegraphics[width=.9\textwidth]{plots/Round6_temp_profile.png}
         \end{figure}
     \end{columns}
+  \footnotetext[1]{\href{https://indico.cern.ch/event/1133434/contributions/4755743/attachments/2404163/4112283/RINSC_irradiated_sensors_Rounds1-3\%281\%29.pdf}{More Info about the the profiles.}
+  }
 \end{frame}
 
 
@@ -284,6 +286,46 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
    \end{itemize}
 \end{frame}
 
+\begin{frame}{IV HexPlots}
+  \begin{columns}
+    \column{.33\textwidth}
+    \begin{figure}
+      \includegraphics[width=0.7\textwidth]{plots/N4792_7.pdf}
+      \caption{Round5, N4792\_7}
+    \end{figure}
+
+    \begin{figure}
+      \includegraphics[width=0.7\textwidth]{plots/N4792_09.pdf}
+      \caption{Round6, N4792\_09}
+    \end{figure}
+
+
+    \column{.33\textwidth}
+    \begin{figure}
+      \includegraphics[width=0.7\textwidth]{plots/N4790_09.pdf}
+      \caption{Round5, N4790\_09}
+    \end{figure}
+
+    \begin{figure}
+      \includegraphics[width=0.7\textwidth]{plots/N4790_8.pdf}
+      \caption{Round6, N4790\_8}
+    \end{figure}
+
+    \column{.33\textwidth}
+    \begin{figure}
+      \includegraphics[width=0.7\textwidth]{plots/N4790_21.pdf}
+      \caption{Round5, N4790\_21}
+    \end{figure}
+
+    \begin{figure}
+      \includegraphics[width=0.7\textwidth]{plots/N4792_20.pdf}
+      \caption{Round6, N4792\_20}
+    \end{figure}
+
+  \end{columns}
+\end{frame}
+
+
 
 
 \section{CV Results, Annealing}
@@ -319,18 +361,16 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 \end{frame}
 
 
-
-
-
-\section{Alpha plot}
+\section{Leakage current vs. fluence behaviour}
 
 \begin{frame}{Proto-A: example CV results}
   \begin{figure}
-      \includegraphics[width=1.0\textwidth]{plots/CV_example.png}    
+      \includegraphics[width=0.6\textwidth]{plots/alpha_600V.pdf}    
   \end{figure}
   \begin{itemize}
-    \item HexPlots as graphical representation of cell properties on the sensor
-    \item CV curves
+    \item Round 5 and 6 sensors in general follow the current damage rate from previous campaigns
+    \item Round 5 the sensor N4792\_7 seems to have received more annealing during the irradiation
+    \item Round 6 has probably been annealed significantly more than 80 mins (values for the other sensors)
   \end{itemize}
 \end{frame}
 
@@ -374,14 +414,12 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 %   \href{https://indico.cern.ch/event/1085830/contributions/4565314/attachments/2344490/3998306/IVCV_recent_HGCal_prototype_sensors_Readiness_Review.pdf}{\beamergotobutton{Dicing Frame (Slide 24)}}
 % \end{frame}
 
-\section{Summary}
+\section{Next steps}
 \begin{frame}{Summary}
   \begin{itemize}
     % \scriptsize
-    \item Majority of sensors have good IV results
-    \item CV results are good for all proto-A sensors
-    \item Longterm leakage current instability can be observed  for some channels
-    \item No discharges has been observed for the irradiated Sensors Round 5 and 6
+    \item Clarify the irradiation setup with Nick to better understand the annealing during the irradiation
+    \item Measure and analyze Round 7 \& 8 sensors
     % \item Test throughput 20 sensors per week
     % \item Shortage of LCR meters problem resolved
   \end{itemize}
