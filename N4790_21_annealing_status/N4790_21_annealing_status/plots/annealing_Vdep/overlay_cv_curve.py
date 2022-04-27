@@ -1,6 +1,8 @@
 # Author: Thorben Quast, thorben.quast@cern.ch
 # Date: 10 September 2021
 
+import sys
+sys.path.append('/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/plots/')
 import common as cm
 ROOT = cm.ROOT
 ROOT.gROOT.SetBatch(True)
@@ -13,11 +15,28 @@ from copy import deepcopy
 from common.util import *
 
 
+
+
+inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/channelCV/'
+plotsDir = 'output/' 
+
+
+
+
+
 #measurement specifics
 _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
+repeatedMeasureNames = [ '_neg37degC_tscan', '_neg38degC_tscan','_neg39degC_tscan', '_neg40degC_tscan', '_neg41degC_tscan', '_neg42degC_tscan' ]
 CHANNEL = 101
 
-name = "annealing_CV_ch%s" %  CHANNEL
+# name = "annealing_CV_ch%s" %  CHANNEL
+name = 'tempareture_effect_CV_{}'.format( CHANNEL )
+
+
+
+
+
+
 #prepare the canvas
 canvas = ROOT.TCanvas("Canvas" + name, "canvas" + name, cm.default_canvas_width, cm.default_canvas_height)
 cm.setup_canvas(canvas, cm.default_canvas_width, cm.default_canvas_height)
@@ -34,13 +53,16 @@ cm.setup_legend(legend2)
 
 colors = [ROOT.kBlack, ROOT.kCyan+1, ROOT.kBlue+1, ROOT.kViolet+1, ROOT.kGreen-1, ROOT.kRed+1, ROOT.kTeal, ROOT.kAzure, ROOT.kMagenta, ROOT.kOrange]
 
-for drawindex, postfix in enumerate(["_1kHz", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]):
+# for drawindex, postfix in enumerate(["_1kHz", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]):
+for drawindex, postfix in enumerate( repeatedMeasureNames ):
     measID = _measID+postfix
     label = "no additional annealing" if postfix=="_1kHz" else postfix.replace("_", "").replace("minAnnealing", " min at 60^{#circ}C")
     # retrieve paths of processed files as input
     print(measID)
-    infile = ROOT.TFile(os.path.join(
-        os.environ["DATA_DIR"], "cv/Vdep/%s/ch_%i.root" % (measID, CHANNEL)), "READ")
+    # infile = ROOT.TFile(os.path.join(
+    #     os.environ["DATA_DIR"], "cv/Vdep/%s/ch_%i.root" % (measID, CHANNEL)), "READ")
+    inFileName = inputRootFolder + '{}/TGraphErrors.root'.format(measID)
+    infile = ROOT.TFile( inFileName, "READ" )
 
 
     gr = deepcopy(infile.Get("Vdep_serial_model_ch%i" % CHANNEL))
@@ -95,5 +117,7 @@ legend1.SetHeader(_label_text)
 
 pad.SetGrid(True)
 #save pdf
-canvas.Print(os.path.join(thisdir, "{}.pdf".format(name)))
-canvas.Print(os.path.join(thisdir, "{}.png".format(name)))
+# canvas.Print(os.path.join(thisdir, "{}.pdf".format(name)))
+# canvas.Print(os.path.join(thisdir, "{}.png".format(name)))
+canvas.Print( plotsDir + '{}_{}.pdf'.format( _measID, name) )
+canvas.Print( plotsDir + '{}_{}.png'.format( _measID, name) )
