@@ -13,7 +13,6 @@ from copy import deepcopy
 from common.util import *
 
 def drawMultipleChannls( ):
-    # channelList = [15, 25, 35, 45, 55, 67, 77, 87, 97, 105, 115, 123, 133, 145, 157, 167, 177, 187]
     channelList = [ 
                    1, 
                    12, 13, 14, 15, 16, 17, 18, 196, 197, 198, 199, 

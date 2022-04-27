@@ -149,7 +149,8 @@ def main():
 
 
         # graphs[_channel].GetYaxis().SetRangeUser(85., 108.)
-        graphs[_channel].GetYaxis().SetRangeUser( 0., 208.)
+        # graphs[_channel].GetYaxis().SetRangeUser( 0., 208.)
+        graphs[_channel].GetYaxis().SetRangeUser( 40., 208.)
         xaxis_title = "t = Addtional annealing at +60^{#circ} C (min)"
         cm.setup_x_axis(graphs[_channel].GetXaxis(), pad, {"Title": xaxis_title, "TitleOffset": 0.90*graphs[_channel].GetXaxis().GetTitleOffset()})
         if EVALVOLTAGE == -1:
