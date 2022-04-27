@@ -18,10 +18,15 @@ from copy import deepcopy
 from common.util import *
 
 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("--EVALVOLTAGE", type=int, help="", default=600, required=False)
+args = parser.parse_args()
+EVALVOLTAGE = args.EVALVOLTAGE
 def main():
     inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/channelIV/'
     HEXPLOT_DIR = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/Hexplot/HGCAL_sensor_analysis/'
-
+    plotsDir = 'output/' 
     #measurement specifics
     _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
     
@@ -40,24 +45,15 @@ def main():
         110: 115.1
     }
 
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--EVALVOLTAGE", type=int, help="", default=600, required=False)
-    args = parser.parse_args()
-    EVALVOLTAGE = args.EVALVOLTAGE
 
     name = "annealing_current"
     if EVALVOLTAGE == -1:
         name += "_atUdep"
-    #export HEXPLOT_DIR=/afs/cern.ch/work/h/hhua/HGCal_sensorTest/Hexplot/HGCAL_sensor_analysis/;
-    #export DATA_DIR=$PWD/../data/
-    # hexplot_geo_file_path = os.path.join(os.environ["HEXPLOT_DIR"], "geo", "hex_positions_HPK_198ch_8inch_edge_ring_testcap.txt")
     hexplot_geo_file_path = HEXPLOT_DIR + 'geo/' + 'hex_positions_HPK_198ch_8inch_edge_ring_testcap.txt' 
     #???it seems we just need this txt file from the HEXPLOT package
     #load geometry mapping
-    geo_mapping = pd.DataFrame(np.genfromtxt(open(hexplot_geo_file_path, "r"), skip_header=7, usecols=(0, 1, 2, 3), dtype=[("channel", "i4"), ("x", "f8"), ("y", "f8"), ("type", "i4")]))
-
-
+    geo_mapping = pd.DataFrame(np.genfromtxt(open(hexplot_geo_file_path, "r"), skip_header=7, usecols=(0, 1, 2, 3), dtype=[("channel", "i4"), ("x", "f8"), ("y", "f8"), ("type", "i4")]))#???to learn
+    
     #prepare the canvas
     canvas = ROOT.TCanvas("Canvas" + name, "canvas" + name, cm.default_canvas_width, cm.default_canvas_height)
     cm.setup_canvas(canvas, cm.default_canvas_width, cm.default_canvas_height)
@@ -68,7 +64,6 @@ def main():
 
 
     # determine per-channel leakage current at common voltage (EVALVOLTAGE)
-
     tmp_data = []
 
     for annealing in [0, 10, 20, 30, 40, 50, 60, 85, 95, 110]:
@@ -83,8 +78,6 @@ def main():
         # retrieve paths of processed files as input
         inFileName = inputRootFolder + '{}/TGraphErrors.root'.format(measID)
         infile = ROOT.TFile( inFileName, "READ" )
-        # infile = ROOT.TFile(os.path.join(
-            # os.environ["DATA_DIR"], "iv/channelIV/%s/TGraphErrors.root" % (measID)), "READ")
 
         for CHANNEL in range(1, 199):
             geotype = np.array(geo_mapping.type[geo_mapping.channel==CHANNEL])[0]
@@ -178,8 +171,10 @@ def main():
 
     pad.SetGrid(True)
     #save pdf
-    canvas.Print(os.path.join(thisdir, "{}.pdf".format(name)))
-    canvas.Print(os.path.join(thisdir, "{}.png".format(name)))
+    # canvas.Print(os.path.join(thisdir, "{}.pdf".format(name)))
+    # canvas.Print(os.path.join(thisdir, "{}.png".format(name)))
+    canvas.Print( plotsDir + '{}_{}_{}.pdf'.format( _measID, name, EVALVOLTAGE) )
+    canvas.Print( plotsDir + '{}_{}_{}.png'.format( _measID, name, EVALVOLTAGE) )
 
 
 if __name__=='__main__':
