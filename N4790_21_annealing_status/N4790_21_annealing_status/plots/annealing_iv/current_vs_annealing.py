@@ -23,26 +23,36 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--EVALVOLTAGE", type=int, help="", default=600, required=False)
 args = parser.parse_args()
 EVALVOLTAGE = args.EVALVOLTAGE
+
 def main():
     inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/channelIV/'
     HEXPLOT_DIR = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/Hexplot/HGCAL_sensor_analysis/'
-    plotsDir = 'output/' 
+    # plotsDir = 'output/'
+    plotsDir = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/slides/plots/' 
     #measurement specifics
-    _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
+    # _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
+    _measID = '8in_198ch_2019_N4790_09_4E15_neg40degC'
     
     
     
-    true_additional_annealing = {
-        0: 0,
-        10: 10.9,
-        20: 22.4,
-        30: 34.1,
-        40: 45.5,
-        50: 55.1,
-        60: 66.6,
-        85: 86.5,
-        95: 97.9,
-        110: 115.1
+    # true_additional_annealing = {
+    #     0: 0,
+    #     10: 10.9,
+    #     20: 22.4,
+    #     30: 34.1,
+    #     40: 45.5,
+    #     50: 55.1,
+    #     60: 66.6,
+    #     85: 86.5,
+    #     95: 97.9,
+    #     110: 115.1
+    # }
+    #???true additional_annealing
+    #/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/HPK_8in_198ch_2019_N4790_09_neg40degC_30minAnnealing/Annealing/annealing_4790_09_0_to_30min.csv
+    true_additional_annealing = {#for N4790_09
+        0:0,
+       30:28,
+       60:59.7 
     }
 
 
@@ -66,13 +76,15 @@ def main():
     # determine per-channel leakage current at common voltage (EVALVOLTAGE)
     tmp_data = []
 
-    for annealing in [0, 10, 20, 30, 40, 50, 60, 85, 95, 110]:
+    # for annealing in [0, 10, 20, 30, 40, 50, 60, 85, 95, 110]:
+    for annealing in [0, 30, 60]:
 
         measID = _measID
         if annealing > 0:
             postfix = "_%iminAnnealing" % annealing
         else:
-            postfix = "_1MOhm"
+            # postfix = "_1MOhm"
+            postfix = ""
         measID = measID+postfix
 
         # retrieve paths of processed files as input

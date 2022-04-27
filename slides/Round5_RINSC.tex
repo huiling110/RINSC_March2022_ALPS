@@ -174,7 +174,6 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 %   \begin{figure}
 %       \includegraphics[width=.45\textwidth]{plots/Sensors.png}
 %   \end{figure}
-
     \begin{table}[htbp] %[h]
         \centering
         \footnotesize%Use \footnotesize for a 20% (linear) reduction in font size
@@ -227,44 +226,90 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 
 \section{Annealing effect on IV results}
 
-\begin{frame}{IV results, N4790\_21}
+\subsubsection{N4790\_21}
+
+\begin{frame}{ Annealing effect on IV (N4790\_21)}
    \begin{columns}
         \column{.5\textwidth}
         \begin{figure}
             \includegraphics[width=1.0\textwidth]{plots/annealing_IV_ch101_N4790_21.png}
             \caption{Annealing effect on IV of pad 101}
         \end{figure}
-
         \column{.5\textwidth}
         \begin{figure}
-            \includegraphics[width=1.0\textwidth]{plots/annealing_current_N4790_21.png}
-            \caption{Current vs annealing time at 600V}
+            \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_IV_ch109.png}
+            \caption{Annealing effect on IV of pad 109}
         \end{figure}
     \end{columns}
     \begin{itemize}
         \item We do see annealing effect on current
-        \item Plots of other channels and other voltages in backup
+        \item Annealing on IV results of other channels all consistent( backup)
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Current vs annealing time for 600V and 650V}
+  \begin{columns}
+       \column{.5\textwidth}
+       \begin{figure}
+           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_600.png}
+       \end{figure}
+       \column{.5\textwidth}
+       \begin{figure}
+           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_650.png}
+       \end{figure}
+   \end{columns}
+\end{frame}
+
+\begin{frame}{Current vs annealing time for 700V and 800V}
+  \begin{columns}
+       \column{.5\textwidth}
+       \begin{figure}
+           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_700.png}
+       \end{figure}
+       \column{.5\textwidth}
+       \begin{figure}
+           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_800.png}
+       \end{figure}
+   \end{columns}
+\end{frame}
+
+\subsection{N4790\_09}
 
 \begin{frame}{Anealing effect on IV results(N4790\_09) }
   \begin{columns}
        \column{.5\textwidth}
        \begin{figure}
-           \includegraphics[width=1.0\textwidth]{plots/annealing_IV_ch101_N4790_09.png}
-           \caption{Annealing effect on IV channel 101 for N4790\_09}
+           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_09_4E15_neg40degC_annealing_IV_ch101.png}
+           \caption{Annealing effect on IV channel 101 }
        \end{figure}
        \column{.5\textwidth}
        \begin{figure}
-           \includegraphics[width=1.0\textwidth]{plots/annealing_current_N4790_09.png}
-           \caption{Annealing effect on 600V on N4790\_09}
+           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_09_4E15_neg40degC_annealing_IV_ch105.png}
+           \caption{Annealing effect on IV channel 105}
        \end{figure}
    \end{columns}
    \begin{itemize}
       \item Current for one channel only (Nr. 15) drops to 0A after annealing
    \end{itemize}
 \end{frame}
+
+\begin{frame}{Current vs annealing time for 600V and 650V}
+  \begin{columns}
+       \column{.5\textwidth}
+       \begin{figure}
+           \includegraphics[width=1.0\textwidth]{plots/annealing_current_N4790_09.png}
+          %  \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_600.png}
+       \end{figure}
+       \column{.5\textwidth}
+       \begin{figure}
+           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_650.png}
+       \end{figure}
+   \end{columns}
+\end{frame}
+
+
+\subsection{N4792\_07}
+
 
 \begin{frame}{IV results, N4792\_07}
   \begin{columns}
@@ -326,7 +371,7 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 
 
 
-\section{CV Results, Annealing}
+\section{Annealing effect on CV Results}
 
 \begin{frame}{CV results, N4790\_21}
   \begin{figure}
@@ -410,57 +455,6 @@ Chaochen Yuan\and Philipp Zehetner\and \textbf{Marta Krawczyk} }
 	Backup slides
 \end{frame}
 
-\begin{frame}{IV results, N4790\_09 cat 650V and 700V}
-  \begin{columns}
-       \column{.45\textwidth}
-       \begin{figure}
-           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_650.png}
-       \end{figure}
-       \column{.55\textwidth}
-       \begin{figure}
-           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_700.png}
-       \end{figure}
-   \end{columns}
-\end{frame}
-
-\begin{frame}{IV results, N4790\_09  650V and 700V}
-  \begin{columns}
-       \column{.5\textwidth}
-       \begin{figure}
-           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_800.png}
-       \end{figure}
-       \column{.5\textwidth}
-    %    \begin{figure}
-        %    \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_700.png}
-    %    \end{figure}
-   \end{columns}
-\end{frame}
-
-\begin{frame}{IV results, N4790\_09 }
-  \begin{columns}
-       \column{.5\textwidth}
-       \begin{figure}
-           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_650.png}
-       \end{figure}
-       \column{.5\textwidth}
-       \begin{figure}
-           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_700.png}
-       \end{figure}
-   \end{columns}
-\end{frame}
-
-\begin{frame}{IV results, N4790\_09 channel at 650V and 700V}
-  \begin{columns}
-       \column{.5\textwidth}
-       \begin{figure}
-           \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_800.png}
-       \end{figure}
-       \column{.5\textwidth}
-    %    \begin{figure}
-        %    \includegraphics[width=1.0\textwidth]{plots/8in_198ch_2019_N4790_21_4E15_neg40degC_annealing_current_700.png}
-    %    \end{figure}
-   \end{columns}
-\end{frame}
 
 
 

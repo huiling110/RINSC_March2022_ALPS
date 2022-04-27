@@ -16,7 +16,7 @@ def drawMultipleChannls( ):
     # channelList = [15, 25, 35, 45, 55, 67, 77, 87, 97, 105, 115, 123, 133, 145, 157, 167, 177, 187]
     channelList = [ 
                    1, 
-                   #12, 13, 14, 15, 16, 17, 18, 196, 197, 198, 199, 
+                   12, 13, 14, 15, 16, 17, 18, 196, 197, 198, 199, 
                    100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110]
     for ichannel in channelList:
         main( ichannel )
@@ -29,21 +29,22 @@ def main(
     CHANNEL = 101
     ):
     
-    # inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/' 
     #input folder:  /eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/ copyied frome /home/data/hgsensor_cv/RINSC_March2022_ALPS/ in plpcd15
-    # inputRootFolder = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/N4790_21_annealing_status/N4790_21_annealing_status/data/'
     inputRootFolder = '/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/rootFile/channelIV/'
-    plotsDir = 'output/' 
+    # plotsDir = 'output/' 
+    plotsDir = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/slides/plots/'
 
     #measurement specifics
     # _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
     # repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
-    _measID = '8in_198ch_2019_N4790_21_4E15'
-    repeatedMeasureNames = [ '_neg37degC_tscan', '_neg38degC_tscan','_neg39degC_tscan', '_neg40degC_tscan', '_neg41degC_tscan', '_neg42degC_tscan' ]
+    # _measID = '8in_198ch_2019_N4790_21_4E15'
+    # repeatedMeasureNames = [ '_neg37degC_tscan', '_neg38degC_tscan','_neg39degC_tscan', '_neg40degC_tscan', '_neg41degC_tscan', '_neg42degC_tscan' ]
+    _measID = '8in_198ch_2019_N4790_09_4E15_neg40degC'
+    repeatedMeasureNames = [ '', '_30minAnnealing', '_60minAnnealing']
     
     
-    # name = "annealing_IV_ch%s" %  CHANNEL
-    name = 'tempareture_effect_{}'.format( CHANNEL )
+    name = "annealing_IV_ch%s" %  CHANNEL
+    # name = 'tempareture_effect_{}'.format( CHANNEL )
     
     
     
