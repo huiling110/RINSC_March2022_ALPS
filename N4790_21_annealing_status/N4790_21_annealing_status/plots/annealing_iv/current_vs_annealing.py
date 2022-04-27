@@ -31,7 +31,8 @@ def main():
     plotsDir = '/afs/cern.ch/work/h/hhua/HGCal_sensorTest/RINSC_March2022_ALPS/slides/plots/' 
     #measurement specifics
     # _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
-    _measID = '8in_198ch_2019_N4790_09_4E15_neg40degC'
+    # _measID = '8in_198ch_2019_N4790_09_4E15_neg40degC'
+    _measID = '8in_198ch_2019_N4792_7_neg40degC'
     
     
     
@@ -49,10 +50,16 @@ def main():
     # }
     #???true additional_annealing
     #/eos/user/h/hgsensor/HGCAL_test_results/Results/RINSC_March2022_ALPS/HPK_8in_198ch_2019_N4790_09_neg40degC_30minAnnealing/Annealing/annealing_4790_09_0_to_30min.csv
-    true_additional_annealing = {#for N4790_09
+    # true_additional_annealing = {#for N4790_09
+    #     0:0,
+    #    30:28,
+    #    60:59.7 
+    # }
+    true_additional_annealing = {#4792_07
         0:0,
-       30:28,
-       60:59.7 
+        30:31,
+        60:62.1
+        
     }
 
 
@@ -141,7 +148,8 @@ def main():
         graphs[_channel].SetLineColor((NGraphs-1)%9+1)
 
 
-        graphs[_channel].GetYaxis().SetRangeUser(85., 108.)
+        # graphs[_channel].GetYaxis().SetRangeUser(85., 108.)
+        graphs[_channel].GetYaxis().SetRangeUser( 0., 208.)
         xaxis_title = "t = Addtional annealing at +60^{#circ} C (min)"
         cm.setup_x_axis(graphs[_channel].GetXaxis(), pad, {"Title": xaxis_title, "TitleOffset": 0.90*graphs[_channel].GetXaxis().GetTitleOffset()})
         if EVALVOLTAGE == -1:

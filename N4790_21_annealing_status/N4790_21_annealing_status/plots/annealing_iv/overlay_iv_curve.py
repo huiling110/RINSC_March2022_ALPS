@@ -39,7 +39,8 @@ def main(
     # repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
     # _measID = '8in_198ch_2019_N4790_21_4E15'
     # repeatedMeasureNames = [ '_neg37degC_tscan', '_neg38degC_tscan','_neg39degC_tscan', '_neg40degC_tscan', '_neg41degC_tscan', '_neg42degC_tscan' ]
-    _measID = '8in_198ch_2019_N4790_09_4E15_neg40degC'
+    # _measID = '8in_198ch_2019_N4790_09_4E15_neg40degC'
+    _measID = '8in_198ch_2019_N4792_7_neg40degC'
     repeatedMeasureNames = [ '', '_30minAnnealing', '_60minAnnealing']
     
     
