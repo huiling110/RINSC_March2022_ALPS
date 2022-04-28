@@ -18,6 +18,7 @@ def drawMultipleChannls( ):
     channelList = [ 
                    1, 
                    12, 13, 14, 15, 16, 17, 18, 196, 197, 198, 199, 
+                    # 13, 14, 15, 16, 17, 18, 196, 197, 198, 199, 
                    100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110]
     for ichannel in channelList:
         main( ichannel )
@@ -27,8 +28,11 @@ def main( CHANNEL = 101):
 
 
     #measurement specifics
-    _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
-    repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
+    # _measID = "8in_198ch_2019_N4790_21_4E15_neg40degC"
+    # repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
+    # _measID = '8in_198ch_2019_N4790_09_4E15_neg40degC'
+    _measID = '8in_198ch_2019_N4792_7_neg40degC'
+    repeatedMeasureNames = [ '', '_30minAnnealing', '_60minAnnealing']
 
     name = "annealing_CV_ch%s" %  CHANNEL
     # name = 'tempareture_effect_CV_{}'.format( CHANNEL )
@@ -61,17 +65,17 @@ def main( CHANNEL = 101):
         label = "no additional annealing" if postfix=="_1kHz" else postfix.replace("_", "").replace("minAnnealing", " min at 60^{#circ}C")
         # retrieve paths of processed files as input
         print(measID)
-        inFileName = inputRootFolder + '{}/TGraphErrors.root'.format(measID)
-        # inFileName = inputRootFolder + '{}/ch_{}.root'.format(measID, CHANNEL)
+        # inFileName = inputRootFolder + '{}/TGraphErrors.root'.format(measID)
+        inFileName = inputRootFolder + '{}/ch_{}.root'.format(measID, CHANNEL)
         infile = ROOT.TFile( inFileName, "READ" )
 
-        if ( not infile.Get("CV_serial_open_corrected_channel%i" % CHANNEL) ):
+        if ( not infile.Get("Vdep_serial_model_ch%i" % CHANNEL) ):
             print( 'channel not measured: ', CHANNEL )
             # break
             continue
 
-        # gr = deepcopy(infile.Get("Vdep_serial_model_ch%i" % CHANNEL))
-        gr = deepcopy(infile.Get("CV_serial_open_corrected_channel%i" % CHANNEL))
+        gr = deepcopy(infile.Get("Vdep_serial_model_ch%i" % CHANNEL))
+        # gr = deepcopy(infile.Get("CV_serial_open_corrected_channel%i" % CHANNEL))
         infile.Close()
 
         #apply scales
