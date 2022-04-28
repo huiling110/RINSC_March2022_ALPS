@@ -31,7 +31,7 @@ def main( CHANNEL = 101):
     repeatedMeasureNames = ["_1MOhm", "_10minAnnealing", "_20minAnnealing", "_30minAnnealing", "_40minAnnealing", "_50minAnnealing", "_60minAnnealing", "_85minAnnealing", "_95minAnnealing", "_110minAnnealing"]
 
     name = "annealing_CV_ch%s" %  CHANNEL
-    name = 'tempareture_effect_CV_{}'.format( CHANNEL )
+    # name = 'tempareture_effect_CV_{}'.format( CHANNEL )
 
 
 
@@ -62,14 +62,16 @@ def main( CHANNEL = 101):
         # retrieve paths of processed files as input
         print(measID)
         inFileName = inputRootFolder + '{}/TGraphErrors.root'.format(measID)
+        # inFileName = inputRootFolder + '{}/ch_{}.root'.format(measID, CHANNEL)
         infile = ROOT.TFile( inFileName, "READ" )
 
-        if ( not infile.Get("Vdep_serial_model_ch%i" % CHANNEL) ):
+        if ( not infile.Get("CV_serial_open_corrected_channel%i" % CHANNEL) ):
             print( 'channel not measured: ', CHANNEL )
             # break
             continue
 
-        gr = deepcopy(infile.Get("Vdep_serial_model_ch%i" % CHANNEL))
+        # gr = deepcopy(infile.Get("Vdep_serial_model_ch%i" % CHANNEL))
+        gr = deepcopy(infile.Get("CV_serial_open_corrected_channel%i" % CHANNEL))
         infile.Close()
 
         #apply scales
